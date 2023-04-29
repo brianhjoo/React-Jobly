@@ -1,24 +1,21 @@
-import { useState, useContext } from "react";
 import Alert from "./Alert";
-import userContext from "./userContext";
+import { useState } from 'react';
 
 /**
  * form for logging in user
  *
  * Props:
- * - login
+ * - login: parent function to call
+ * - errors: any errors returned when attempting to log in
  *
  * State:
  * - formData
  *
  * RoutesList --> LoginForm --> Alert
- *
  */
 
 function LoginForm({ login, errors }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
-
-  const { isLoggedIn } = useContext(userContext);
 
   /** Update login */
   function handleChange(evt) {
@@ -30,11 +27,15 @@ function LoginForm({ login, errors }) {
   }
 
   /** Call parent function */
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     const { username, password } = formData;
-    login(username, password);
-    setFormData({ username: "", password: "" });
+    try {
+      await login(username, password);  // TODO: handle the error in the form, have a piece of state with errors
+    } catch(err) {
+      setErrors(err);
+    }
+   // TODO: no need to clear form data, better user experience.
   }
 
   return (

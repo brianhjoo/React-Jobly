@@ -2,10 +2,10 @@
 /** Error alert message
  *
  * Props:
- *  -
+ *  - errors: any errors caught when attempting API calls.
  *
  * State:
- *  -
+ *  - none
  *
  * [LoginForm, SignupForm, ProfileForm] --> Alert
  */

@@ -5,13 +5,13 @@ import Alert from "./Alert";
  * form for signing up a user
  *
  * Props:
- * - signUp
+ * - signUp: parent function to call
+ * - errors: any errors returned when attempting to register
  *
  * State:
  * - formData
  *
  * RoutesList --> SignupForm --> Alert
- *
  */
 
 const SIGNUP_INITIAL_DATA = {
@@ -38,7 +38,7 @@ function SignupForm({ signUp, errors }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     signUp(formData);
-    // setFormData({ username: "", password: "" });
+    setFormData(SIGNUP_INITIAL_DATA);
   }
 
   return (

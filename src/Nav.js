@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 
 /** navigation menu
  *
- * props: none
+ * props:
+ *  - isLoggedIn: true/false whether or not user is logged in
+ *  - logOut: parent function to call
+ *  - username: logged in user's username
  *
- * state: none
+ * state:
+ *  - none
  *
  * App -> Nav
  *
  */
-function Nav({ isLoggedIn }) {
-  // TODO: NavLink better for styling
+function Nav({ isLoggedIn, logOut, username }) {
+
   return (
     <div className="Nav">
       <Link to="/">Jobly</Link>
@@ -20,7 +24,7 @@ function Nav({ isLoggedIn }) {
           <Link to="/companies">Companies</Link>
           <Link to="/jobs">Jobs</Link>
           <Link to="/profile">Profile</Link>
-          <Link to="/">Logout</Link>
+          <Link to="/" onClick={logOut} >Logout {username}</Link>
         </>
       ) : (
         <>

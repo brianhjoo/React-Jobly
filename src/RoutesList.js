@@ -8,10 +8,16 @@ import SignupForm from "./SignupForm";
 import ProfileForm from "./ProfileForm";
 
 /** Routes to all components
- *  FIXME:
- * Props: none
  *
- * State: none
+ * Props:
+ *  - user: user object
+ *  - login: parent function to call
+ *  - signUp: parent function to call
+ *  - loginErrors: any errors returned when logging in
+ *  - signUpErrors: any errors returned when registering
+ *
+ * State:
+ *  - none
  *
  * App --> RoutesList
  *
@@ -19,7 +25,6 @@ import ProfileForm from "./ProfileForm";
 function RoutesList({
   login,
   signUp,
-  update,
   user,
   loginErrors,
   signUpErrors,
@@ -40,7 +45,7 @@ function RoutesList({
       />
       <Route
         path="/profile"
-        element={<ProfileForm update={update} user={user} />}
+        element={<ProfileForm user={user} />}
       />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

@@ -17,18 +17,20 @@ function Homepage() {
     <div className="Homepage">
       <h3>Jobly</h3>
       <p>All the jobs in one, convenient place.</p>
-      {!isLoggedIn ? (
-        <div>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-        </div>
-      ) : (
-        <h4>{`Welcome Back, ${firstName}!`}</h4>
-      )}
+      {
+        !isLoggedIn
+          ?
+          <div>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/signup">
+              <button>Sign Up</button>
+            </Link>
+          </div>
+          :
+          <h4>{`Welcome Back, ${firstName}!`}</h4>
+      }
     </div>
   );
 }
